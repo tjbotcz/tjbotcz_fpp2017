@@ -1,0 +1,1143 @@
+[
+    {
+        "id": "79fb4c35.bed474",
+        "type": "ibmiot in",
+        "z": "2af81b80.671b34",
+        "authentication": "boundService",
+        "apiKey": "",
+        "inputType": "evt",
+        "deviceId": "tjbot",
+        "applicationId": "",
+        "deviceType": "TJBotDeviceType",
+        "eventType": "status",
+        "commandType": "",
+        "format": "json",
+        "name": "TJBot Status",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allEvents": "",
+        "allCommands": "",
+        "allFormats": "",
+        "qos": "2",
+        "x": 164,
+        "y": 234,
+        "wires": [
+            [
+                "2d1793ed.c0dbcc",
+                "c8a1204c.058ce",
+                "65722e69.48f8e",
+                "45790370.9a3a3c",
+                "d34dc6fc.77c278",
+                "ddd93188.e70e7",
+                "a70f96.e163d068",
+                "71c0cd05.134254",
+                "66e6f20.8e7f21",
+                "8b87c00.fcba34",
+                "fa1c5087.ad5da",
+                "be9a5a8e.6dc818",
+                "1416fb5a.a7bd95",
+                "867ebc2e.629c2",
+                "91e2beb8.9e276"
+            ]
+        ]
+    },
+    {
+        "id": "2d1793ed.c0dbcc",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 635,
+        "y": 190,
+        "wires": []
+    },
+    {
+        "id": "f6201d51.47bf9",
+        "type": "ibmiot in",
+        "z": "2af81b80.671b34",
+        "authentication": "boundService",
+        "apiKey": "",
+        "inputType": "evt",
+        "deviceId": "tjbot",
+        "applicationId": "",
+        "deviceType": "TJBotDeviceType",
+        "eventType": "connected",
+        "commandType": "",
+        "format": "json",
+        "name": "Connected",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allEvents": "",
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 161,
+        "y": 117,
+        "wires": [
+            [
+                "4f7c1774.399b48"
+            ]
+        ]
+    },
+    {
+        "id": "4f7c1774.399b48",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 625,
+        "y": 116,
+        "wires": []
+    },
+    {
+        "id": "c8a1204c.058ce",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "robot name",
+        "func": "msg.payload = msg.payload.robotName;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 655,
+        "y": 290,
+        "wires": [
+            [
+                "c256c6d9.820ff8"
+            ]
+        ]
+    },
+    {
+        "id": "c256c6d9.820ff8",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "68710b96.3d5354",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "robot name",
+        "label": "Name:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 897,
+        "y": 297,
+        "wires": []
+    },
+    {
+        "id": "d34dc6fc.77c278",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "LED color",
+        "func": "if (msg.payload.ledOn === 0) {\n    msg.payload = \"/images/colors/no color.png\";\n    return msg;\n}\nmsg.payload = \"/images/colors/\" + msg.payload.ledColor + \".png\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 645,
+        "y": 490,
+        "wires": [
+            [
+                "2a6b3b61.3c3324"
+            ]
+        ]
+    },
+    {
+        "id": "45790370.9a3a3c",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "LED",
+        "func": "if (msg.payload.ledOn) {\n    msg.payload = \"ON\";\n} else {\n    msg.payload = \"OFF\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 635,
+        "y": 450,
+        "wires": [
+            [
+                "98e8b476.3fbf48"
+            ]
+        ]
+    },
+    {
+        "id": "98e8b476.3fbf48",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "dfa46a70.efdcf8",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "LED",
+        "label": "LED Status:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 873,
+        "y": 457,
+        "wires": []
+    },
+    {
+        "id": "65722e69.48f8e",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "listening",
+        "func": "if (msg.payload.listening) {\n    msg.payload = \"TJbot is listening.\";\n} else {\n    msg.payload = \"TJbot isn't listening.\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 645,
+        "y": 250,
+        "wires": [
+            [
+                "c74eac08.7820d"
+            ]
+        ]
+    },
+    {
+        "id": "c74eac08.7820d",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "68710b96.3d5354",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "name": "listening",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 883,
+        "y": 257,
+        "wires": []
+    },
+    {
+        "id": "ddd93188.e70e7",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "house LED",
+        "func": "msg.payload = (msg.payload.houseLedOn ? \"ON\" : \"OFF\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 655,
+        "y": 650,
+        "wires": [
+            [
+                "5a9566d6.2e2088"
+            ]
+        ]
+    },
+    {
+        "id": "a70f96.e163d068",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "house LED color",
+        "func": "msg.payload = \"/images/colors/\" + msg.payload.houseLedColor + \".png\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 675,
+        "y": 693,
+        "wires": [
+            [
+                "e62fa376.34044"
+            ]
+        ]
+    },
+    {
+        "id": "71c0cd05.134254",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "house temperature",
+        "func": "msg.payload = msg.payload.houseTemperature;\nmsg.topic = \"Temperature [°C]\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 675,
+        "y": 733,
+        "wires": [
+            [
+                "36736875.b851c8",
+                "8086bd7e.e11c5"
+            ]
+        ]
+    },
+    {
+        "id": "36736875.b851c8",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "b020428d.ce458",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "house temperature",
+        "label": "Temperature:",
+        "format": "{{msg.payload}} °C",
+        "layout": "row-left",
+        "x": 915,
+        "y": 736,
+        "wires": []
+    },
+    {
+        "id": "66e6f20.8e7f21",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "house humidity",
+        "func": "msg.payload = msg.payload.houseHumidity;\nmsg.topic = \"Humidity [%]\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 665,
+        "y": 773,
+        "wires": [
+            [
+                "8ba8bee1.4c95c",
+                "11bc956e.6d10ab"
+            ]
+        ]
+    },
+    {
+        "id": "8ba8bee1.4c95c",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "b020428d.ce458",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "house humidity",
+        "label": "Humidity:",
+        "format": "{{msg.payload}} %",
+        "layout": "row-left",
+        "x": 907,
+        "y": 778,
+        "wires": []
+    },
+    {
+        "id": "8b87c00.fcba34",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "house door state",
+        "func": "msg.payload = \"/images/doors/\" + msg.payload.houseDoorState + \".png\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 684,
+        "y": 905,
+        "wires": [
+            [
+                "1211bf3b.de6611"
+            ]
+        ]
+    },
+    {
+        "id": "fa1c5087.ad5da",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "location",
+        "func": "msg.payload = msg.payload.myLocation;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 645,
+        "y": 330,
+        "wires": [
+            [
+                "6ec034c5.0497ec"
+            ]
+        ]
+    },
+    {
+        "id": "6ec034c5.0497ec",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "68710b96.3d5354",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "name": "location",
+        "label": "Location:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 883,
+        "y": 337,
+        "wires": []
+    },
+    {
+        "id": "be9a5a8e.6dc818",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "timezone",
+        "func": "msg.payload = msg.payload.timezone;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 645,
+        "y": 370,
+        "wires": [
+            [
+                "45bda1bb.1212f"
+            ]
+        ]
+    },
+    {
+        "id": "45bda1bb.1212f",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "68710b96.3d5354",
+        "order": 4,
+        "width": "0",
+        "height": "0",
+        "name": "timezone",
+        "label": "Timezone:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 883,
+        "y": 377,
+        "wires": []
+    },
+    {
+        "id": "1416fb5a.a7bd95",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "LED pulsing",
+        "func": "if (msg.payload.ledPulsing) {\n    msg.payload = \"ON\";\n} else {\n    msg.payload = \"OFF\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 655,
+        "y": 530,
+        "wires": [
+            [
+                "aa34dda7.84ec1"
+            ]
+        ]
+    },
+    {
+        "id": "aa34dda7.84ec1",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "dfa46a70.efdcf8",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "name": "LED pulsing",
+        "label": "LED Pulsing:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 893,
+        "y": 537,
+        "wires": []
+    },
+    {
+        "id": "867ebc2e.629c2",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "arm position",
+        "func": "if (msg.payload.armPosition === \"back\") {\n    msg.payload = \"/images/arm/back.png\";\n} else if (msg.payload.armPosition === \"raised\") {\n    msg.payload = \"/images/arm/up.png\";\n} else if (msg.payload.armPosition === \"forward\") {\n    msg.payload = \"/images/arm/fwd.png\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 655,
+        "y": 570,
+        "wires": [
+            [
+                "2d622d27.bee0e2"
+            ]
+        ]
+    },
+    {
+        "id": "91e2beb8.9e276",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "see",
+        "func": "if (msg.payload.see.hasOwnProperty('objects')) {\n    var objects = msg.payload.see.objects;\n    msg.payload = \"\";\n    objects.sort(function (a, b) {\n        return b.score - a.score;\n    });\n    for (var i = 0; i < objects.length; i++) {\n        msg.payload += objects[i].class + \"</br>\";\n    }\n} else if (msg.payload.see.hasOwnProperty('text')) {\n    msg.payload = msg.payload.see.text;\n} else if (msg.payload.see.hasOwnProperty('faces')) {\n    var faces = msg.payload.see.faces;\n    msg.payload = \"\";\n    var counter = 1;\n    for (var i = 0; i < faces.length; i++) {\n        if (faces[i].hasOwnProperty('identity')) {\n            msg.payload += faces[i].identity.name + \"</br>\";\n        } else {\n            msg.payload += \"<b>Person \" + counter + \"</br></b>\";\n            counter++;\n        }\n        if (faces[i].hasOwnProperty('gender')) {\n            msg.payload += \"&nbsp;&nbsp;Gender: <b>\" + faces[i].gender.gender + \"</b></br>\";\n        }\n        if (faces[i].hasOwnProperty('age')) {\n            msg.payload += \"&nbsp;&nbsp;Aged: <b>\" + faces[i].age.min + \"</b> to <b>\" + faces[i].age.max + \"</b></br></br>\";\n        }\n    } \n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 642,
+        "y": 966,
+        "wires": [
+            [
+                "f7a7c987.aeee98",
+                "c6e2c8a9.8e0838"
+            ]
+        ]
+    },
+    {
+        "id": "f7a7c987.aeee98",
+        "type": "ui_template",
+        "z": "2af81b80.671b34",
+        "group": "c2baa079.e4a2b",
+        "name": "",
+        "order": 0,
+        "width": "4",
+        "height": "7",
+        "format": "<div ng-bind-html=\"msg.payload\">\n    {{msg.payload}}\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 891,
+        "y": 970,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eebcd03c.6ddc1",
+        "type": "ibmiot in",
+        "z": "2af81b80.671b34",
+        "authentication": "boundService",
+        "apiKey": "",
+        "inputType": "evt",
+        "deviceId": "tjhouse",
+        "applicationId": "",
+        "deviceType": "HouseDeviceType",
+        "eventType": "house-data",
+        "commandType": "",
+        "format": "json",
+        "name": "TJBot House Status",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allEvents": "",
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 158,
+        "y": 1099,
+        "wires": [
+            [
+                "bca77b85.40d508",
+                "1dc338d2.3dde47"
+            ]
+        ]
+    },
+    {
+        "id": "2a6b3b61.3c3324",
+        "type": "ui_template",
+        "z": "2af81b80.671b34",
+        "group": "dfa46a70.efdcf8",
+        "name": "LED color",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<div>\n    LED Color:\n    &nbsp;<img src={{msg.payload}} alt=\"\" style=\"width:25px; height:25px;\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 883,
+        "y": 497,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6e2c8a9.8e0838",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 846,
+        "y": 1013,
+        "wires": []
+    },
+    {
+        "id": "5a9566d6.2e2088",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "501aa523.4f51ac",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "house LED",
+        "label": "LED Status:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 895,
+        "y": 653,
+        "wires": []
+    },
+    {
+        "id": "e62fa376.34044",
+        "type": "ui_template",
+        "z": "2af81b80.671b34",
+        "group": "501aa523.4f51ac",
+        "name": "house LED color",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<div>\n    LED Color:\n    &nbsp;<img src={{msg.payload}} alt=\"\" style=\"width:25px; height:25px;\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 914,
+        "y": 693,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d622d27.bee0e2",
+        "type": "ui_template",
+        "z": "2af81b80.671b34",
+        "group": "dfa46a70.efdcf8",
+        "name": "arm position",
+        "order": 4,
+        "width": "3",
+        "height": "3",
+        "format": "<div>\n    Arm Position:<br><br>\n    <img src={{msg.payload}} alt=\"Arm Position\" style=\"width:90px; height:90px;\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 892,
+        "y": 575,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1211bf3b.de6611",
+        "type": "ui_template",
+        "z": "2af81b80.671b34",
+        "group": "501aa523.4f51ac",
+        "name": "door state",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "format": "<div>\n    Door State:<br><br>\n    <img src={{msg.payload}} alt=\"Door State\" style=\"width:90px; height:90px;\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 894,
+        "y": 908,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bca77b85.40d508",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "Prepare Data for TJBot",
+        "func": "var house_data = {\n    \"houseLedOn\": 0,\n    \"houseLedColor\": \"no color\",\n    \"houseTemperature\": msg.payload.t,\n    \"houseHumidity\": msg.payload.h,\n    \"houseHeatIndex\": msg.payload.hi,\n    \"houseDoorState\": (msg.payload.d == 1)? \"opened\" : \"closed\"\n};\n   \nvar r = msg.payload.di.r; \nvar g = msg.payload.di.g;\nvar b = msg.payload.di.b;\n\nif (r === 0 && g === 0 && b === 0){\n    house_data.houseLedOn = 0;   \n    house_data.houseLedColor = \"no color\";\n} else {\n    house_data.houseLedOn = 1;  \n    if (r === 1 && g === 0 && b === 0){house_data.houseLedColor = \"red\"}\n    if (r === 0 && g === 1 && b === 0){house_data.houseLedColor = \"green\"}\n    if (r === 0 && g === 0 && b === 1){house_data.houseLedColor = \"blue\"}\n    if (r === 1 && g === 1 && b === 0){house_data.houseLedColor = \"yellow\"}\n    if (r === 1 && g === 0 && b === 1){house_data.houseLedColor = \"magenta\"}\n    if (r === 0 && g === 1 && b === 1){house_data.houseLedColor = \"cyan\"}\n    if (r === 1 && g === 1 && b === 1){house_data.houseLedColor = \"white\"}\n}\n\nmsg.payload = house_data;\nmsg.eventOrCommandType = \"update_house_data\";\nmsg.deviceId = \"tjbot\";\nmsg.deviceType = \"TJBotDeviceType\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 1097,
+        "wires": [
+            [
+                "9b87f73e.85e4b8",
+                "ddd93188.e70e7",
+                "a70f96.e163d068",
+                "66e6f20.8e7f21",
+                "1177c7d.1b61238",
+                "8b87c00.fcba34",
+                "47c16dd1.59ebe4",
+                "71c0cd05.134254"
+            ]
+        ]
+    },
+    {
+        "id": "1dc338d2.3dde47",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 350,
+        "y": 1157,
+        "wires": []
+    },
+    {
+        "id": "ecd3b09a.e6649",
+        "type": "ibmiot out",
+        "z": "2af81b80.671b34",
+        "authentication": "boundService",
+        "apiKey": "",
+        "outputType": "cmd",
+        "deviceId": "tjbot",
+        "deviceType": "TJBotDeviceType",
+        "eventCommandType": "update_house_data",
+        "format": "json",
+        "data": "...",
+        "qos": 0,
+        "name": "command to TJBot",
+        "service": "registered",
+        "x": 1010,
+        "y": 1097,
+        "wires": []
+    },
+    {
+        "id": "9b87f73e.85e4b8",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 630,
+        "y": 1157,
+        "wires": []
+    },
+    {
+        "id": "1177c7d.1b61238",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "heat index",
+        "func": "msg.payload = msg.payload.houseHeatIndex;\nmsg.topic = \"Heat Index [°C]\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 655,
+        "y": 813,
+        "wires": [
+            [
+                "235ad45c.cb87ac",
+                "c6988152.bbb05"
+            ]
+        ]
+    },
+    {
+        "id": "47c16dd1.59ebe4",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "if changed, send update to TJBot",
+        "func": "var ohd = global.get('oldHouseData') || null; //old data\nvar chd = msg.payload; //current data\n\nif (ohd === null) {\n    global.set('oldHouseData', chd);\n    return;\n}\n\nif (ohd.houseLedOn != chd.houseLedOn ||\n        ohd.houseLedColor != chd.houseLedColor ||\n        ohd.houseTemperature != chd.houseTemperature ||\n        ohd.houseHumidity != chd.houseHumidity ||\n        ohd.houseHeatIndex != chd.houseHeatIndex ||\n        ohd.houseDoorState != chd.houseDoorState){\n    \n    global.set('oldHouseData', chd);\n    return msg; //let's update, data has changed\n} \n\nreturn; //do not update, data has not changed\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 720,
+        "y": 1097,
+        "wires": [
+            [
+                "2c0c811f.e2fa5e",
+                "ecd3b09a.e6649"
+            ]
+        ]
+    },
+    {
+        "id": "2c0c811f.e2fa5e",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 990,
+        "y": 1157,
+        "wires": []
+    },
+    {
+        "id": "2337758d.b2a4fa",
+        "type": "ibmiot in",
+        "z": "2af81b80.671b34",
+        "authentication": "boundService",
+        "apiKey": "",
+        "inputType": "evt",
+        "deviceId": "tjbot",
+        "applicationId": "",
+        "deviceType": "TJBotDeviceType",
+        "eventType": "cmd-house",
+        "commandType": "",
+        "format": "json",
+        "name": "TJBot cmd-house",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allEvents": "",
+        "allCommands": "",
+        "allFormats": "",
+        "qos": "2",
+        "x": 166,
+        "y": 1315,
+        "wires": [
+            [
+                "ab5ce9b.2992218",
+                "63636d3f.4deff4"
+            ]
+        ]
+    },
+    {
+        "id": "15abc776.61e149",
+        "type": "ibmiot out",
+        "z": "2af81b80.671b34",
+        "authentication": "boundService",
+        "apiKey": "",
+        "outputType": "cmd",
+        "deviceId": "tjhouse",
+        "deviceType": "HouseDeviceType",
+        "eventCommandType": "house-cmd",
+        "format": "txt",
+        "data": "...",
+        "qos": 0,
+        "name": "Command House",
+        "service": "registered",
+        "x": 696,
+        "y": 1315,
+        "wires": []
+    },
+    {
+        "id": "ab5ce9b.2992218",
+        "type": "function",
+        "z": "2af81b80.671b34",
+        "name": "map commands for house",
+        "func": "//if (!msg.payload.hasOwnProperty('cmdType')) return;\n\nvar mapColors = {\"red\":    \"lr\",\n                \"green\":   \"lg\",\n                \"blue\":    \"lb\",\n                \"yellow\":  \"ly\",\n                \"magenta\": \"lm\",\n                \"cyan\":    \"lc\",\n                \"white\":   \"lw\",\n                \"random\":  \"lx\"};\n                \nvar cmdType = msg.payload.cmdType;\n\nswitch (cmdType){\n    case \"house_open_door\":\n        msg.payload = \"do\";\n        break;\n    case \"house_close_door\":\n        msg.payload = \"dc\";\n        break;\n    case \"house_change_led_color\":\n        msg.payload = mapColors[msg.payload.color];\n        break;\n    case \"house_led_turn_off\":\n        msg.payload = \"xx\";\n        break;\n    case \"house_led_turn_on\":\n        break;\n    case \"house_reset\":\n        msg.payload = \"rr\";\n        break;\n   default:\n    console.log(\"unknown command\");\n  }\n\nmsg.format = \"txt\";\nmsg.eventOrCommandType = \"house-cmd\";\nmsg.deviceId = \"tjhouse\";\nmsg.deviceType = \"HouseDeviceType\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 396,
+        "y": 1315,
+        "wires": [
+            [
+                "636cf6fc.9aa518",
+                "15abc776.61e149"
+            ]
+        ]
+    },
+    {
+        "id": "636cf6fc.9aa518",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 684,
+        "y": 1395,
+        "wires": []
+    },
+    {
+        "id": "63636d3f.4deff4",
+        "type": "debug",
+        "z": "2af81b80.671b34",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 365,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "235ad45c.cb87ac",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "b020428d.ce458",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "heat index",
+        "label": "Heat Index:",
+        "format": "{{msg.payload}} °C",
+        "layout": "row-left",
+        "x": 896,
+        "y": 817,
+        "wires": []
+    },
+    {
+        "id": "8086bd7e.e11c5",
+        "type": "ui_chart",
+        "z": "2af81b80.671b34",
+        "name": "house temperature chart",
+        "group": "9f1f4e40.83046",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "House Temperature",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 1126,
+        "y": 752,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "11bc956e.6d10ab",
+        "type": "ui_chart",
+        "z": "2af81b80.671b34",
+        "name": "house humidity chart",
+        "group": "b5e26840.67fff8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "House Humidity",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 1116,
+        "y": 791,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c6988152.bbb05",
+        "type": "ui_chart",
+        "z": "2af81b80.671b34",
+        "name": "house heat index chart",
+        "group": "16a48035.52c9b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "House Heat Index",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "x": 1116,
+        "y": 829,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "441e4df.dfc77b4",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "68710b96.3d5354",
+        "order": 0,
+        "width": "5",
+        "height": "3",
+        "name": "empty space 1",
+        "label": "",
+        "format": "",
+        "layout": "row-spread",
+        "x": 1228,
+        "y": 577,
+        "wires": []
+    },
+    {
+        "id": "8f877474.86c528",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "501aa523.4f51ac",
+        "order": 0,
+        "width": "4",
+        "height": "2",
+        "name": "empty space 3",
+        "label": "",
+        "format": "",
+        "layout": "row-spread",
+        "x": 1229,
+        "y": 645,
+        "wires": []
+    },
+    {
+        "id": "aed65137.ce339",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "dfa46a70.efdcf8",
+        "order": 5,
+        "width": "4",
+        "height": "1",
+        "name": "empty space 2",
+        "label": "",
+        "format": "",
+        "layout": "row-spread",
+        "x": 1229,
+        "y": 611,
+        "wires": []
+    },
+    {
+        "id": "a036bd6b.1f14c",
+        "type": "ui_text",
+        "z": "2af81b80.671b34",
+        "group": "b020428d.ce458",
+        "order": 0,
+        "width": "5",
+        "height": "5",
+        "name": "empty space 4",
+        "label": "",
+        "format": "",
+        "layout": "row-left",
+        "x": 1228,
+        "y": 681,
+        "wires": []
+    },
+    {
+        "id": "7ad59c46.6bb8d4",
+        "type": "comment",
+        "z": "2af81b80.671b34",
+        "name": "TJBot is connected",
+        "info": "",
+        "x": 189.5,
+        "y": 72,
+        "wires": []
+    },
+    {
+        "id": "89ae8060.84e2a",
+        "type": "comment",
+        "z": "2af81b80.671b34",
+        "name": "Periodic status of context object from TJBot",
+        "info": "",
+        "x": 256.5,
+        "y": 184,
+        "wires": []
+    },
+    {
+        "id": "6f21927e.4db75c",
+        "type": "comment",
+        "z": "2af81b80.671b34",
+        "name": "Periodic house data which are set to TJBot",
+        "info": "",
+        "x": 234,
+        "y": 1049,
+        "wires": []
+    },
+    {
+        "id": "6fae4156.5b61c",
+        "type": "comment",
+        "z": "2af81b80.671b34",
+        "name": "TJBot commands its house",
+        "info": "",
+        "x": 194,
+        "y": 1261,
+        "wires": []
+    },
+    {
+        "id": "68710b96.3d5354",
+        "type": "ui_group",
+        "z": "",
+        "name": "Basic Info",
+        "tab": "f542ec94.c6db5",
+        "order": 1,
+        "disp": true,
+        "width": "5"
+    },
+    {
+        "id": "dfa46a70.efdcf8",
+        "type": "ui_group",
+        "z": "",
+        "name": "LED & Arm",
+        "tab": "f542ec94.c6db5",
+        "order": 2,
+        "disp": true,
+        "width": "4"
+    },
+    {
+        "id": "b020428d.ce458",
+        "type": "ui_group",
+        "z": "",
+        "name": "House 2",
+        "tab": "f542ec94.c6db5",
+        "order": 4,
+        "disp": false,
+        "width": "5"
+    },
+    {
+        "id": "c2baa079.e4a2b",
+        "type": "ui_group",
+        "z": "",
+        "name": "Visual Recognition",
+        "tab": "f542ec94.c6db5",
+        "order": 5,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "501aa523.4f51ac",
+        "type": "ui_group",
+        "z": "",
+        "name": "House",
+        "tab": "f542ec94.c6db5",
+        "order": 3,
+        "disp": true,
+        "width": "4"
+    },
+    {
+        "id": "9f1f4e40.83046",
+        "type": "ui_group",
+        "z": "",
+        "name": "House Temperature",
+        "tab": "f542ec94.c6db5",
+        "order": 6,
+        "disp": false,
+        "width": "8"
+    },
+    {
+        "id": "b5e26840.67fff8",
+        "type": "ui_group",
+        "z": "",
+        "name": "House Humidity",
+        "tab": "f542ec94.c6db5",
+        "order": 7,
+        "disp": false,
+        "width": "8"
+    },
+    {
+        "id": "16a48035.52c9b",
+        "type": "ui_group",
+        "z": "",
+        "name": "House Heat Index",
+        "tab": "f542ec94.c6db5",
+        "order": 8,
+        "disp": false,
+        "width": "8"
+    },
+    {
+        "id": "f542ec94.c6db5",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TJBot Info Dashboard",
+        "icon": "dashboard",
+        "order": 2
+    }
+]

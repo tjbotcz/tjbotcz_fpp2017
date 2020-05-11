@@ -1,0 +1,66 @@
+{
+  "name": "ibm-tjbot-prague",
+  "description": "TJBot connected to IoT Platform with conversation and visual recognition",
+  "version": "0.0.1",
+  "author": {
+    "name": "Jiri Petnik",
+    "email": "jiri_petnik@cz.ibm.com"
+  },
+  "contributors": [
+    {
+      "name": "Michal Bida",
+      "email": "michal.bida@cz.ibm.com"
+    },
+    {
+      "name": "Jan Louda",
+      "email": "jan_louda@cz.ibm.com"
+    },
+    {
+      "name": "Jan Dostal",
+      "email": "jan.dostal3@cz.ibm.com"
+    },
+    {
+      "name": "Petra Pelikanova",
+      "email": "petra.pelikanova@cz.ibm.com"
+    }
+  ],
+
+  "dependencies": {
+    "ibmiotf": "latest",
+    "assert": "^1.4.1",
+    "asyncawait": "^1.0.6",
+    "color-model": "^0.2.2",
+    "colornames": "^1.1.1",
+    "fifo": "^2.3.0",
+    "mic": "^2.1.1",
+    "node-raspistill": "^0.0.11",
+    "object.pick": "^1.2.0",
+    "pigpio": "^0.4.0",
+    "rpi-ws281x-native": "^0.8.1",
+    "semaphore": "^1.0.5",
+    "sleep": "^5.0.0",
+    "sound-player": "^1.0.4",
+    "temp": "^0.8.3",
+    "watson-developer-cloud": "^2.11.1",
+    "winston": "^2.3.1",
+    "express": "~4.0.0",
+    "body-parser": "~1.0.1",
+    "melanke-watchjs": "1.3.1",
+    "pureimage": "0.1.3",
+    "async": "2.5.0"
+  },
+  "main": "tjbot_prague.js",
+  "homepage": "https://git.ng.bluemix.net/fpp2017/ibm-tjbot-prague",
+  "keywords": [
+    "tjbot"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git@git.ng.bluemix.net:fpp2017/ibm-tjbot-prague.git"
+  },
+  "scripts": {
+    "start": "node tjbot_prague.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

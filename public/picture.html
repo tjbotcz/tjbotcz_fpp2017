@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <title>Pictures preview</title>
+</head>
+<body>
+<!--<h1>Picture reloader</h1> -->
+<script type="text/javascript">
+  window.setInterval(function(){
+      document.getElementById('picture_orig').src = "./img/picture.jpg?random="+new Date().getTime();
+      document.getElementById('picture_edit').src = "./img/picture_edit.jpg?random="+new Date().getTime();
+  }, 2000);
+</script>
+
+<div style="width: 100%;">
+  <div style="float:left; width:49%; padding:2px">
+    <h2>Original picture</h2>
+    <img id="picture_orig" style="max-width:100%;" alt="Orig picture"/>
+  </div>
+  <div style="float:right; width:49%; padding:2px">
+    <h2>Marked picture</h2>
+    <img id="picture_edit" style="max-width:100%;" alt="Marked picture"/>
+  </div>
+</div>
+<div style="clear:both"></div>
+</body>
+</html>

@@ -1,0 +1,1436 @@
+[
+    {
+        "id": "cf3ea7eb.161d18",
+        "type": "ibmiot out",
+        "z": "36f52c3f.b023e4",
+        "authentication": "boundService",
+        "apiKey": "",
+        "outputType": "cmd",
+        "deviceId": "tjbot",
+        "deviceType": "TJBotDeviceType",
+        "eventCommandType": "...",
+        "format": "json",
+        "data": "...",
+        "qos": 0,
+        "name": "command TJBot",
+        "service": "registered",
+        "x": 783,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "2ce40c0e.24cd84",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "take a photo",
+        "func": "msg.eventOrCommandType = \"take_a_photo\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 339,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "2b435cfc.8d8994",
+        "type": "debug",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 806,
+        "y": 285,
+        "wires": []
+    },
+    {
+        "id": "9beed50.869bfa8",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED turn off",
+        "func": "msg.eventOrCommandType = \"led_turn_off\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 588,
+        "wires": [
+            [
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "63a99c13.ddaeec",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "Wave arm",
+        "func": "msg.eventOrCommandType = \"wave_arm\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 416,
+        "y": 985,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "f3a46a2c.949c68",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED change color",
+        "func": "msg.payload = {\"color\": msg.payload };\nmsg.eventOrCommandType = \"led_change_color\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 426,
+        "y": 625,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "3a910c12.e84ccc",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "classify photo",
+        "func": "msg.eventOrCommandType = \"classify_photo\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 457,
+        "y": 381,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "f85672fb.18f2e8",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "read text",
+        "func": "msg.eventOrCommandType = \"read_text\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 435,
+        "y": 424,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "9598b9f1.a4a458",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "detect faces",
+        "func": "msg.eventOrCommandType = \"detect_faces\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 445,
+        "y": 463,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "bbbe6a99.7c5e",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "start listening",
+        "func": "msg.eventOrCommandType = \"listen\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 456,
+        "y": 105,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "8487c004.75b0b8",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "photo and detect face",
+        "func": "msg.eventOrCommandType = \"photo_and_detect_faces\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 474,
+        "y": 502,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "df970a25.9a5688",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED pulse on",
+        "func": "msg.eventOrCommandType = \"pulse_on\";\nmsg.payload = {};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 416,
+        "y": 805,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "6ec86434.711704",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED pulse off",
+        "func": "msg.eventOrCommandType = \"pulse_off\";\nmsg.payload = {};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 416,
+        "y": 845,
+        "wires": [
+            [
+                "2b435cfc.8d8994",
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "9ff6a50d.a04db8",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "467e111a.5daae8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start listening",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "",
+        "x": 178.54544067382812,
+        "y": 105.00001525878906,
+        "wires": [
+            [
+                "bbbe6a99.7c5e"
+            ]
+        ]
+    },
+    {
+        "id": "86164781.b2cb78",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "57cbdea5.66aa7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Take a photo",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 167.63636779785156,
+        "y": 339.81817626953125,
+        "wires": [
+            [
+                "2ce40c0e.24cd84"
+            ]
+        ]
+    },
+    {
+        "id": "aff705b9.c3b238",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "57cbdea5.66aa7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Classify a photo",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 177.45454545454544,
+        "y": 381.27272727272725,
+        "wires": [
+            [
+                "3a910c12.e84ccc"
+            ]
+        ]
+    },
+    {
+        "id": "c5e07daf.96505",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "57cbdea5.66aa7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Read text",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 154.90908813476562,
+        "y": 423.09088134765625,
+        "wires": [
+            [
+                "f85672fb.18f2e8"
+            ]
+        ]
+    },
+    {
+        "id": "114da4ad.cae76b",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "57cbdea5.66aa7",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Detect faces",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 162.1818389892578,
+        "y": 462.18182373046875,
+        "wires": [
+            [
+                "9598b9f1.a4a458"
+            ]
+        ]
+    },
+    {
+        "id": "48d5f35e.0e7324",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "57cbdea5.66aa7",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Take a photo and detect faces",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 222.18182373046875,
+        "y": 502.272705078125,
+        "wires": [
+            [
+                "8487c004.75b0b8"
+            ]
+        ]
+    },
+    {
+        "id": "6023e89b.1982a",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "6429c163.69bcd8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED turn off",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 166,
+        "y": 545,
+        "wires": [
+            [
+                "9beed50.869bfa8",
+                "486d5d9b.6ed4f4"
+            ]
+        ]
+    },
+    {
+        "id": "20c5a924.dc440e",
+        "type": "ui_dropdown",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "label": "Colors",
+        "place": "no color",
+        "group": "6429c163.69bcd8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "options": [
+            {
+                "label": "red",
+                "value": "red",
+                "type": "str"
+            },
+            {
+                "label": "green",
+                "value": "green",
+                "type": "str"
+            },
+            {
+                "label": "blue",
+                "value": "blue",
+                "type": "str"
+            },
+            {
+                "label": "yellow",
+                "value": "yellow",
+                "type": "str"
+            },
+            {
+                "label": "magenta",
+                "value": "magenta",
+                "type": "str"
+            },
+            {
+                "label": "cyan",
+                "value": "cyan",
+                "type": "str"
+            },
+            {
+                "label": "white",
+                "value": "white",
+                "type": "str"
+            },
+            {
+                "label": "random",
+                "value": "random",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 246,
+        "y": 645,
+        "wires": [
+            [
+                "f3a46a2c.949c68"
+            ]
+        ]
+    },
+    {
+        "id": "8d5b6fa1.8281c",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "6429c163.69bcd8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED pulse on",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 216,
+        "y": 805,
+        "wires": [
+            [
+                "df970a25.9a5688"
+            ]
+        ]
+    },
+    {
+        "id": "b8e4f9d8.6134b8",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "6429c163.69bcd8",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED pulse off",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 216,
+        "y": 845,
+        "wires": [
+            [
+                "6ec86434.711704"
+            ]
+        ]
+    },
+    {
+        "id": "486d5d9b.6ed4f4",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "clear dropdown",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 192,
+        "y": 595,
+        "wires": [
+            [
+                "20c5a924.dc440e"
+            ]
+        ]
+    },
+    {
+        "id": "63fedd31.aecc24",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "68e78308.95573c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Arm back",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"position\" : \"back\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 196,
+        "y": 905,
+        "wires": [
+            [
+                "63a99c13.ddaeec"
+            ]
+        ]
+    },
+    {
+        "id": "5058f114.f31b8",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "68e78308.95573c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Raise arm",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"position\" : \"raised\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 206,
+        "y": 945,
+        "wires": [
+            [
+                "63a99c13.ddaeec"
+            ]
+        ]
+    },
+    {
+        "id": "68295349.f294fc",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "68e78308.95573c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Lower arm",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"position\" : \"forward\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 206,
+        "y": 985,
+        "wires": [
+            [
+                "63a99c13.ddaeec"
+            ]
+        ]
+    },
+    {
+        "id": "eb8a0828.f8f078",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "68e78308.95573c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Wave arm",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"position\" : \"wave\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 196,
+        "y": 1025,
+        "wires": [
+            [
+                "63a99c13.ddaeec"
+            ]
+        ]
+    },
+    {
+        "id": "f49d06bb.035a58",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "pause listening",
+        "func": "msg.eventOrCommandType = \"pause_listening\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 456,
+        "y": 205,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "6355ea9b.2e5bf4",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "Resume listening",
+        "func": "msg.eventOrCommandType = \"resume_listening\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 466,
+        "y": 245,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "642ab33d.e7a55c",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "stop listening",
+        "func": "msg.eventOrCommandType = \"stop_listening\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 446,
+        "y": 145,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "9c794abe.38e438",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "467e111a.5daae8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop listening",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "",
+        "x": 176,
+        "y": 145,
+        "wires": [
+            [
+                "642ab33d.e7a55c"
+            ]
+        ]
+    },
+    {
+        "id": "2f949362.dceb8c",
+        "type": "comment",
+        "z": "36f52c3f.b023e4",
+        "name": "deprecated",
+        "info": "",
+        "x": 286,
+        "y": 225,
+        "wires": []
+    },
+    {
+        "id": "1a5fbd4e.eff7d3",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "6429c163.69bcd8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED turn on",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 186,
+        "y": 705,
+        "wires": [
+            [
+                "b52eb339.6a8bf"
+            ]
+        ]
+    },
+    {
+        "id": "b52eb339.6a8bf",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED turn off",
+        "func": "msg.eventOrCommandType = \"led_turn_on\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 426,
+        "y": 705,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "bd32c339.d381e",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "c2474bf9.8b2a98",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Close the door",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 189,
+        "y": 1210,
+        "wires": [
+            [
+                "309f3016.1fb1b"
+            ]
+        ]
+    },
+    {
+        "id": "19275ad.3b67ca5",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "c2474bf9.8b2a98",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open the door",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 189,
+        "y": 1170,
+        "wires": [
+            [
+                "2e93d637.bd27ea"
+            ]
+        ]
+    },
+    {
+        "id": "2e93d637.bd27ea",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "open",
+        "func": "msg.eventOrCommandType = \"house_open_door\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 359,
+        "y": 1170,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "309f3016.1fb1b",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "close",
+        "func": "msg.eventOrCommandType = \"house_close_door\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 359,
+        "y": 1210,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "aebe1f23.f1ab",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED turn off",
+        "func": "msg.eventOrCommandType = \"house_led_turn_off\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 455,
+        "y": 1302,
+        "wires": [
+            [
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "138cffec.a815b",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED change color",
+        "func": "msg.payload = {\"color\": msg.payload };\nmsg.eventOrCommandType = \"house_change_led_color\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 431,
+        "y": 1339,
+        "wires": [
+            [
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "5c3aba0f.8ce9b4",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "c2474bf9.8b2a98",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED turn off",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 171,
+        "y": 1259,
+        "wires": [
+            [
+                "aebe1f23.f1ab",
+                "7b9de2ae.bf8d9c"
+            ]
+        ]
+    },
+    {
+        "id": "90e0c18b.149cb",
+        "type": "ui_dropdown",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "label": "Colors",
+        "place": "no color",
+        "group": "c2474bf9.8b2a98",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "options": [
+            {
+                "label": "red",
+                "value": "red",
+                "type": "str"
+            },
+            {
+                "label": "green",
+                "value": "green",
+                "type": "str"
+            },
+            {
+                "label": "blue",
+                "value": "blue",
+                "type": "str"
+            },
+            {
+                "label": "yellow",
+                "value": "yellow",
+                "type": "str"
+            },
+            {
+                "label": "magenta",
+                "value": "magenta",
+                "type": "str"
+            },
+            {
+                "label": "cyan",
+                "value": "cyan",
+                "type": "str"
+            },
+            {
+                "label": "white",
+                "value": "white",
+                "type": "str"
+            },
+            {
+                "label": "random",
+                "value": "random",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 251,
+        "y": 1359,
+        "wires": [
+            [
+                "138cffec.a815b"
+            ]
+        ]
+    },
+    {
+        "id": "7b9de2ae.bf8d9c",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "clear dropdown",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 197,
+        "y": 1309,
+        "wires": [
+            [
+                "90e0c18b.149cb"
+            ]
+        ]
+    },
+    {
+        "id": "adbf827d.0b56f",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "c2474bf9.8b2a98",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED turn on",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 191,
+        "y": 1419,
+        "wires": [
+            [
+                "f7bac270.56c2a"
+            ]
+        ]
+    },
+    {
+        "id": "f7bac270.56c2a",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED turn on",
+        "func": "msg.eventOrCommandType = \"house_led_turn_on\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 431,
+        "y": 1419,
+        "wires": [
+            [
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "1dd68102.7373df",
+        "type": "comment",
+        "z": "36f52c3f.b023e4",
+        "name": "Command house over TJBot",
+        "info": "",
+        "x": 220,
+        "y": 1132,
+        "wires": []
+    },
+    {
+        "id": "39bc66f2.e1c6ca",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "1d9e8dfd.6b1422",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Close the door",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "dc",
+        "payloadType": "str",
+        "topic": "",
+        "x": 203,
+        "y": 1658,
+        "wires": [
+            [
+                "38f610f7.a344b"
+            ]
+        ]
+    },
+    {
+        "id": "8265f1ab.fcbf4",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "1d9e8dfd.6b1422",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open the door",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "do",
+        "payloadType": "str",
+        "topic": "",
+        "x": 203,
+        "y": 1618,
+        "wires": [
+            [
+                "38f610f7.a344b"
+            ]
+        ]
+    },
+    {
+        "id": "7483a2e7.db2a3c",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "LED turn off",
+        "func": "msg.payload = \"xx\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 439,
+        "y": 1712,
+        "wires": [
+            [
+                "38f610f7.a344b"
+            ]
+        ]
+    },
+    {
+        "id": "64409738.39a598",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "1d9e8dfd.6b1422",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED turn off",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 182,
+        "y": 1707,
+        "wires": [
+            [
+                "7483a2e7.db2a3c",
+                "91a1c6cd.614668"
+            ]
+        ]
+    },
+    {
+        "id": "6c808c18.64ca44",
+        "type": "ui_dropdown",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "label": "Colors",
+        "place": "no color",
+        "group": "1d9e8dfd.6b1422",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "options": [
+            {
+                "label": "red",
+                "value": "lr",
+                "type": "str"
+            },
+            {
+                "label": "green",
+                "value": "lg",
+                "type": "str"
+            },
+            {
+                "label": "blue",
+                "value": "lb",
+                "type": "str"
+            },
+            {
+                "label": "yellow",
+                "value": "ly",
+                "type": "str"
+            },
+            {
+                "label": "magenta",
+                "value": "lm",
+                "type": "str"
+            },
+            {
+                "label": "cyan",
+                "value": "lc",
+                "type": "str"
+            },
+            {
+                "label": "white",
+                "value": "lw",
+                "type": "str"
+            },
+            {
+                "label": "random",
+                "value": "lx",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 396,
+        "y": 1762,
+        "wires": [
+            [
+                "38f610f7.a344b"
+            ]
+        ]
+    },
+    {
+        "id": "91a1c6cd.614668",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "clear dropdown",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 211,
+        "y": 1757,
+        "wires": [
+            [
+                "6c808c18.64ca44"
+            ]
+        ]
+    },
+    {
+        "id": "a97504fc.8f0d18",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "1d9e8dfd.6b1422",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED turn on",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "lx",
+        "payloadType": "str",
+        "topic": "",
+        "x": 187,
+        "y": 1812,
+        "wires": [
+            [
+                "38f610f7.a344b"
+            ]
+        ]
+    },
+    {
+        "id": "558354a.09009ac",
+        "type": "comment",
+        "z": "36f52c3f.b023e4",
+        "name": "Command directly to house",
+        "info": "",
+        "x": 234,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "38f610f7.a344b",
+        "type": "ibmiot out",
+        "z": "36f52c3f.b023e4",
+        "authentication": "boundService",
+        "apiKey": "",
+        "outputType": "cmd",
+        "deviceId": "tjhouse",
+        "deviceType": "HouseDeviceType",
+        "eventCommandType": "house-cmd",
+        "format": "txt",
+        "data": "...",
+        "qos": 0,
+        "name": "Command House",
+        "service": "registered",
+        "x": 776,
+        "y": 1731,
+        "wires": []
+    },
+    {
+        "id": "6a959feb.91554",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "c2474bf9.8b2a98",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "House reset",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 191,
+        "y": 1460,
+        "wires": [
+            [
+                "493f671c.7e9838"
+            ]
+        ]
+    },
+    {
+        "id": "493f671c.7e9838",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "reset",
+        "func": "msg.eventOrCommandType = \"house_reset\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 462,
+        "y": 1470,
+        "wires": [
+            [
+                "cf3ea7eb.161d18"
+            ]
+        ]
+    },
+    {
+        "id": "b62355f9.46c798",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "1d9e8dfd.6b1422",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "House reset",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "rr",
+        "payloadType": "str",
+        "topic": "",
+        "x": 174,
+        "y": 1862,
+        "wires": [
+            [
+                "38f610f7.a344b"
+            ]
+        ]
+    },
+    {
+        "id": "66b887f4.a5f708",
+        "type": "ui_button",
+        "z": "36f52c3f.b023e4",
+        "name": "",
+        "group": "483e5d32.ae94b4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reset TJBot",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "",
+        "x": 168,
+        "y": 41,
+        "wires": [
+            [
+                "42e5890c.3da4a8"
+            ]
+        ]
+    },
+    {
+        "id": "42e5890c.3da4a8",
+        "type": "function",
+        "z": "36f52c3f.b023e4",
+        "name": "reset tjbot",
+        "func": "msg.eventOrCommandType = \"tjbot_reset\";\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 433,
+        "y": 37,
+        "wires": [
+            [
+                "cf3ea7eb.161d18",
+                "2b435cfc.8d8994"
+            ]
+        ]
+    },
+    {
+        "id": "467e111a.5daae8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Conversation",
+        "tab": "db04e53.07d0218",
+        "order": 5,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "57cbdea5.66aa7",
+        "type": "ui_group",
+        "z": "",
+        "name": "Visual recognition",
+        "tab": "db04e53.07d0218",
+        "order": 4,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "6429c163.69bcd8",
+        "type": "ui_group",
+        "z": "",
+        "name": "TJBot LED",
+        "tab": "db04e53.07d0218",
+        "order": 3,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "68e78308.95573c",
+        "type": "ui_group",
+        "z": "",
+        "name": "TJBot Arm",
+        "tab": "db04e53.07d0218",
+        "order": 6,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "c2474bf9.8b2a98",
+        "type": "ui_group",
+        "z": "",
+        "name": "House (over TJBot)",
+        "tab": "db04e53.07d0218",
+        "order": 1,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "1d9e8dfd.6b1422",
+        "type": "ui_group",
+        "z": "",
+        "name": "House (directly)",
+        "tab": "db04e53.07d0218",
+        "order": 2,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "483e5d32.ae94b4",
+        "type": "ui_group",
+        "z": "",
+        "name": "General",
+        "tab": "db04e53.07d0218",
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "db04e53.07d0218",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TJBot Control Dashboard",
+        "icon": "dashboard"
+    }
+]

@@ -1,0 +1,99 @@
+/*
+  inspired by: http://nicolasgallagher.com/pure-css-speech-bubbles/demo/default.css
+  date: 11.09.2017
+*/
+.tab1 {
+	padding-bottom: 10px;
+}
+.div1 {
+	padding-bottom: 21px;
+}
+.message {
+  position:relative;
+  padding:15px;
+  margin:0px 0 2px;
+  color:#000;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:12px;
+}
+.message:after {
+  content:"";
+  position:absolute;
+  bottom:-15px; 
+  left:50px; 
+  border-width:15px 15px 0; 
+  border-style:solid;
+  border-color:#f3961c transparent;
+  display:block;
+  width:0;
+}
+.message.user {
+  margin-left:50px;
+  margin-right:50px;
+  background:#3ff21c;
+}
+.message.user:after {
+  top:16px; 
+  left:-50px;
+  bottom:auto;
+  border-width:10px 50px 10px 0;
+  border-color:transparent #3ff21c;
+}
+.message.tjbot {
+  margin-right:50px;
+  margin-left:50px;
+  background:#1bb5f1;
+}
+.message.tjbot:after {
+  top:16px; 
+  right:-50px; 
+  bottom:auto;
+  left:auto;
+  border-width:10px 0 10px 50px;
+  border-color:transparent #1bb5f1;
+}
+.c2 { /* for the 1st user message so that it won't move after the answer from tjbot comes */
+	width: 100%;
+}
+.td-al-right {
+  text-align: right;
+}
+.btn {
+  background: #348cd9;
+  background-image: -webkit-linear-gradient(top, #348cd9, #2980b9);
+  background-image: -moz-linear-gradient(top, #348cd9, #2980b9);
+  background-image: -ms-linear-gradient(top, #348cd9, #2980b9);
+  background-image: -o-linear-gradient(top, #348cd9, #2980b9);
+  background-image: linear-gradient(to bottom, #348cd9, #2980b9);
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 10px 2px 10px;
+  border: solid #000dff 2px;
+  text-decoration: none;
+}
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+h1 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Hammersmith One', sans-serif;
+  position: relative;
+  color: #1bb5f1;
+  margin-bottom: 10px;
+}
+td {
+  vertical-align: top;
+}
